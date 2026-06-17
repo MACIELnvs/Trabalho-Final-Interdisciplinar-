@@ -1,7 +1,8 @@
 import { Carta } from "../src/Carta";
 import { Colecao } from "../src/Colecao";
+import { IPesquisavel } from "./IPesquisavel";
 
-export class Feitico extends Carta {
+export class Feitico extends Carta implements IPesquisavel {
 
     private _tipoFeitico: string;
 
@@ -18,15 +19,15 @@ export class Feitico extends Carta {
         this._tipoFeitico = tipoFeitico;
     }
 
-    toString(): string {
-        return `Feitiço: ${super.toString()} - Tipo de Feitiço: ${this._tipoFeitico}`;
-    }
-
-    atendeCriteiro(tipoPesquisado: string): boolean {
+    atendeCriterio(tipoPesquisado: string): boolean {
         if (this._tipoFeitico == tipoPesquisado) {
             return true;
         }
         return false;
+    }
+
+    toString(): string {
+        return `Feitiço: ${super.toString()} - Tipo de Feitiço: ${this._tipoFeitico}`;
     }
 
 }

@@ -1,6 +1,8 @@
 import { Carta } from "../src/Carta";
 import { Colecao } from "../src/Colecao";
-export class Monstro extends Carta {
+import { IPesquisavel } from "./IPesquisavel";
+
+export class Monstro extends Carta implements IPesquisavel{
 
     private _ataque: number;
     private _defesa: number
@@ -20,7 +22,7 @@ export class Monstro extends Carta {
         return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
     }
 
-    atendeCriteiro(racaPesquisada: string): boolean {
+    atendeCriterio(racaPesquisada: string): boolean {
         if (this._raca == racaPesquisada) {
             return true;
         }

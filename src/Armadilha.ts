@@ -1,7 +1,8 @@
 import { Carta } from "../src/Carta";
 import { Colecao } from "../src/Colecao";
+import { IPesquisavel } from "./IPesquisavel";
 
-export class Armadilha extends Carta {
+export class Armadilha extends Carta implements IPesquisavel {
 
     private _tipoArmadilha: string;
 
@@ -19,14 +20,16 @@ export class Armadilha extends Carta {
         this._tipoArmadilha = tipoArmadilha;
     }
 
-    toString(): string {
-        return `Armadilha: ${super.toString()} - Tipo de Armadilha: ${this._tipoArmadilha}`;
-    }
-
-    atendeCriteiro(tipoPesquisado: string): boolean {
+    atendeCriterio(tipoPesquisado: string): boolean {
         if (this._tipoArmadilha == tipoPesquisado) {
             return true;
         }
         return false;
     }
+
+    toString(): string {
+        return `Armadilha: ${super.toString()} - Tipo de Armadilha: ${this._tipoArmadilha}`;
+    }
+
+
 }

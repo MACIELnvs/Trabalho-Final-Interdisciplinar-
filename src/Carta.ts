@@ -1,14 +1,15 @@
 import { Colecao } from "../src/Colecao";
+import { IPesquisavel } from "./IPesquisavel";
 
-export abstract class Carta {
+export abstract class Carta implements IPesquisavel {
 
-    private _id:number;
-    private _nome:string;
-    private _img:string;
-    private _descricao:string;
+    private _id: number;
+    private _nome: string;
+    private _img: string;
+    private _descricao: string;
     private _vetColecao: Array<Colecao> = [];
 
-    constructor(id:number, nome:string, img:string, descricao:string, vetColecao:Array<Colecao>){
+    constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>) {
 
         this._id = id;
         this._nome = nome;
@@ -17,44 +18,46 @@ export abstract class Carta {
         this._vetColecao = vetColecao;
     }
 
-    get id():number{
+    get id(): number {
         return this._id;
     }
 
-    get nome():string{
+    get nome(): string {
         return this._nome;
     }
 
-    get img():string{
+    get img(): string {
         return this._img;
     }
 
-    get descricao():string{
+    get descricao(): string {
         return this._descricao;
     }
 
-    get vetColecao():Array<Colecao>{
+    get vetColecao(): Array<Colecao> {
         return this._vetColecao;
     }
 
-    set nome(nome:string){
+    public set nome(nome: string) {
         this._nome = nome;
     }
 
-    set img(img:string){
+    set img(img: string) {
         this._img = img;
     }
 
 
-    set descricao(descricao:string){
+    set descricao(descricao: string) {
         this._descricao = descricao;
     }
 
-    set vetColecao(vetColecao:Array<Colecao>){
+    set vetColecao(vetColecao: Array<Colecao>) {
         this._vetColecao = vetColecao;
     }
 
-    toString():string{
+    abstract atendeCriterio(criterio: string): boolean;
+
+    toString(): string {
         return `ID: ${this._id} - Nome: ${this._nome} - Imagem: ${this._img} - Descrição: ${this._descricao}`;
     }
 
