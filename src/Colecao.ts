@@ -2,13 +2,13 @@ import { IPesquisavel } from "./IPesquisavel";
 
 export class Colecao implements IPesquisavel {
 
+    private _id: string;
     private _nome: string;
-    private _codigo: string;
     private _raridade: string;
 
     constructor(nome: string, codigo: string, raridade: string) {
         this._nome = nome;
-        this._codigo = codigo;
+        this._id = codigo;
         this._raridade = raridade;
     }
 
@@ -17,7 +17,7 @@ export class Colecao implements IPesquisavel {
     }
 
     get codigo(): string {
-        return this._codigo;
+        return this._id;
     }
 
     get raridade(): string {
@@ -40,7 +40,7 @@ export class Colecao implements IPesquisavel {
     }
 
     toString(): string {
-        return `Nome: ${this._nome} - Código: ${this._codigo} - Raridade: ${this._raridade}`;
+        return `Nome: ${this._nome} - Código: ${this._id} - Raridade: ${this._raridade}`;
     }
 
 }

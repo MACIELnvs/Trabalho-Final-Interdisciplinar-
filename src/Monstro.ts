@@ -2,7 +2,7 @@ import { Carta } from "../src/Carta";
 import { Colecao } from "../src/Colecao";
 import { IPesquisavel } from "./IPesquisavel";
 
-export class Monstro extends Carta implements IPesquisavel{
+export class Monstro extends Carta implements IPesquisavel {
 
     private _ataque: number;
     private _defesa: number
@@ -18,8 +18,60 @@ export class Monstro extends Carta implements IPesquisavel{
         this._raca = raca;
     }
 
-    toString(): string {
-        return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
+    public get ataque(): number {
+        return this._ataque;
+    }
+
+
+    public get defesa(): number {
+        return this._defesa;
+    }
+
+
+    public get nivel(): number {
+        return this._nivel;
+    }
+
+
+    public get raca(): string {
+        return this._raca;
+    }
+
+
+    public set ataque(novoAtaque: number) {
+        if (novoAtaque >= 0) {
+            this._ataque = novoAtaque;
+        }
+        else {
+            console.log("O ataque não pode ser negativo!");
+        }
+    }
+
+    public set defesa(novaDefesa: number) {
+        if (novaDefesa >= 0) {
+            this._defesa = novaDefesa;
+        }
+        else {
+            console.log("A defesa não pode ser negativa!");
+        }
+    }
+
+    public set nivel(novoNivel: number) {
+        if (novoNivel >= 0) {
+            this._nivel = novoNivel;
+        }
+        else {
+            console.log("O Nivel não pode ser negativo!");
+        }
+    }
+
+    public set raca(novaRaca: string) {
+        if (novaRaca.length > 0) {
+            this._raca = novaRaca;
+        }
+        else {
+            console.log("A Raça não pode ser uma string vazia!");
+        }
     }
 
     atendeCriterio(racaPesquisada: string): boolean {
@@ -28,4 +80,10 @@ export class Monstro extends Carta implements IPesquisavel{
         }
         return false;
     }
+
+
+    toString(): string {
+        return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
+    }
+
 }

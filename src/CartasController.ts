@@ -1,8 +1,11 @@
 import { Carta } from "./Carta";
+import { Feitico } from "./Feitico";
+import { IPesquisavel } from "./IPesquisavel";
+import { Monstro } from "./Monstro";
 
 export class CartaController {
 
-    private _cartas: Array<Carta> = [];
+    _cartas: Array<Carta> = [];
 
     public adicionar(carta: Carta): boolean {
         if (this._cartas.push(carta)) {
@@ -13,7 +16,7 @@ export class CartaController {
         }
     }
 
-    public listar(): Array<Carta> {
+    public listar(): Array<IPesquisavel> {
         return this._cartas.slice();
     }
 
@@ -29,14 +32,9 @@ export class CartaController {
         }
 
     }
-
     
 
-//implementar atualizar
-
-
-
-    public pesquisarPorCriterio(criterio: string): Array<Carta> {
+    public pesquisarPorCriterio(criterio: string): Array<IPesquisavel> {
         let vetorFiltrado = this._cartas.filter(carta => carta.atendeCriterio(criterio));
         return vetorFiltrado;
     }
