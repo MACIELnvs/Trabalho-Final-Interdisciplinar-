@@ -12,14 +12,17 @@ export class ColecaoController {
         }
 
         for (let index = 0; index < dados.card_sets.length; index++) {
+
             const dadosColecao = dados.card_sets[index];
             const objColecao: Colecao = new Colecao(dadosColecao.set_name, dadosColecao.set_code, dadosColecao.set_rarity);
+
             this._vetColecao.push(objColecao);
+
         }
 
         return this.listar();
     }
-    
+
 
     public adicionar(novaColecao: Colecao): void {
         this._vetColecao.push(novaColecao);
