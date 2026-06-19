@@ -1,6 +1,6 @@
-import { Carta } from "../src/Carta";
-import { Colecao } from "../src/Colecao";
-import { IPesquisavel } from "./IPesquisavel";
+import { Carta } from "./Carta";
+import { Colecao } from "./Colecao";
+import { IPesquisavel } from "../IPesquisavel";
 
 export class Monstro extends Carta implements IPesquisavel {
 

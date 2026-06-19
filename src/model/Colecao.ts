@@ -1,4 +1,4 @@
-import { IPesquisavel } from "./IPesquisavel";
+import { IPesquisavel } from "../IPesquisavel";
 
 export class Colecao implements IPesquisavel {
 
@@ -16,6 +16,10 @@ export class Colecao implements IPesquisavel {
         return this._nome;
     }
 
+    get id(): string {
+        return this.id;
+    }
+    
     get codigo(): string {
         return this._id;
     }
@@ -40,7 +44,7 @@ export class Colecao implements IPesquisavel {
     }
 
     toString(): string {
-        return `Nome: ${this._nome} - Código: ${this._id} - Raridade: ${this._raridade}`;
+        return `Nome Coleção: ${this._nome}\nCódigo: ${this._id}\nRaridade: ${this._raridade}`;
     }
 
 }

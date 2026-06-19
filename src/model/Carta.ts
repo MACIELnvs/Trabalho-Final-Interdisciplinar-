@@ -1,5 +1,5 @@
-import { Colecao } from "../src/Colecao";
-import { IPesquisavel } from "./IPesquisavel";
+import { Colecao } from "./Colecao";
+import { IPesquisavel } from "../IPesquisavel";
 
 export abstract class Carta implements IPesquisavel {
 
