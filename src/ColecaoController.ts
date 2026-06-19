@@ -33,9 +33,16 @@ export class ColecaoController {
         return this._vetColecao.slice();
     }
 
+    public atualizar(id: string, novaColecao:Colecao): void {
+        const indice = this._vetColecao.findIndex(obj => obj.id == id);
+
+        if (indice != -1) {
+            this._vetColecao[indice] = novaColecao;
+        }
+    }
 
     public remover(id: string): boolean {
-     
+
         let indice = this._vetColecao.findIndex(obj => obj.id == id);
 
         if (indice != -1) {
@@ -55,5 +62,5 @@ export class ColecaoController {
     }
 
 
-    
+
 }

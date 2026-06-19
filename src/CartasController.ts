@@ -57,6 +57,13 @@ export class CartaController {
         return this._vetCartas.slice();
     }
 
+    public atualizar(id:number,novaCarta: Carta):void{
+        const indice = this._vetCartas.findIndex(obj => obj.id == id);
+
+        if (indice != -1) {
+            this._vetCartas[indice] = novaCarta;
+        }
+    }
 
     public remover(id: number): boolean {
         let indice = this._vetCartas.findIndex(carta => carta.id == id);
