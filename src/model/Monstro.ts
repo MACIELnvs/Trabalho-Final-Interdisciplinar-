@@ -10,6 +10,7 @@ export class Monstro extends Carta implements IPesquisavel {
     private _raca: string;
 
     constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>, ataque: number, defesa: number, nivel: number, raca: string) {
+        
         super(id, nome, img, descricao, vetColecao);
 
         this._ataque = ataque;

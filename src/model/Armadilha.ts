@@ -7,6 +7,7 @@ export class Armadilha extends Carta implements IPesquisavel {
     private _tipoArmadilha: string;
 
     constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>, tipoArmadilha: string) {
+
         super(id, nome, img, descricao, vetColecao);
 
         this._tipoArmadilha = tipoArmadilha;
@@ -16,8 +17,8 @@ export class Armadilha extends Carta implements IPesquisavel {
         return this._tipoArmadilha;
     }
 
-    set tipoArmadilha(tipoArmadilha: string) {
-        this._tipoArmadilha = tipoArmadilha;
+    set tipoArmadilha(novoTipoArmadilha: string) {
+        this._tipoArmadilha = novoTipoArmadilha;
     }
 
     atendeCriterio(tipoPesquisado: string): boolean {

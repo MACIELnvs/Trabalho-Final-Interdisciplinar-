@@ -11,7 +11,7 @@ export class CartaController {
     _vetCartas: Array<Carta> = [];
 
 
-    public criarCartas(responseJson: any) {
+    public criarCartas(responseJson: any): void {
 
         for (let i = 0; i < responseJson.data.length; i++) {
 
@@ -48,7 +48,7 @@ export class CartaController {
 
 
     public adicionar(carta: Carta): void {
-        this._vetCartas.push(carta)
+        this._vetCartas.push(carta);
 
     }
 

@@ -19,9 +19,7 @@ export class ColecaoController {
 
         return this.listar();
     }
-
     
-
 
     public adicionar(novaColecao: Colecao): void {
         this._vetColecao.push(novaColecao);

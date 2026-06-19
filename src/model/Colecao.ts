@@ -6,9 +6,9 @@ export class Colecao implements IPesquisavel {
     private _nome: string;
     private _raridade: string;
 
-    constructor(nome: string, codigo: string, raridade: string) {
+    constructor(nome: string, id: string, raridade: string) {
         this._nome = nome;
-        this._id = codigo;
+        this._id = id;
         this._raridade = raridade;
     }
 
@@ -20,10 +20,6 @@ export class Colecao implements IPesquisavel {
         return this.id;
     }
     
-    get codigo(): string {
-        return this._id;
-    }
-
     get raridade(): string {
         return this._raridade;
     }

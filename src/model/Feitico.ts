@@ -7,7 +7,9 @@ export class Feitico extends Carta implements IPesquisavel {
     private _tipoFeitico: string;
 
     constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>, tipoFeitico: string) {
+        
         super(id, nome, img, descricao, vetColecao);
+        
         this._tipoFeitico = tipoFeitico;
     }
 
