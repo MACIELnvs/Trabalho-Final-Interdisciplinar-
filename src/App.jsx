@@ -3,16 +3,22 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import AppRoutes from './Router'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Menu from './componentes/Menu'
+import Home from './pages/Home.jsx'
+import Cartas from './pages/Cartas.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
-      <AppRoutes/>
-    </div>
-  )
+    <BrowserRouter>
+      <Menu />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Cartas" element={<Cartas />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App
