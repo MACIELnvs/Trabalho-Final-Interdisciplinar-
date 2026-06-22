@@ -57,7 +57,10 @@ export abstract class Carta implements IPesquisavel {
 
     abstract atendeCriterio(criterio: string): boolean;
 
-   // abstract atualizar(id: number, nomeAtributo: string, novoValor: string | number | Array<Colecao>): boolean;
+   //abstract atualizar(id: number, nomeAtributo: string, novoValor: string | number | Array<Colecao>): boolean;
+
+  // abstract atualizar(/* id:number, */ oldValue:any, newValue:any):boolean; //pode ser any?
+  //na verdade, atualizar nao pode pertencer a Carta, uma vez que separamos as responsabilidades.
 
     toString(): string {
         return `ID: ${this._id} - Nome: ${this._nome} - Imagem: ${this._img} - Descrição: ${this._descricao}`;

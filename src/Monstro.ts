@@ -86,4 +86,45 @@ export class Monstro extends Carta implements IPesquisavel {
         return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
     }
 
-}
+    atualizar<atributo extends keyof Monstro>(
+        old: Monstro[atributo],
+        newW: Monstro[atributo],
+        array: Array<Monstro>,
+        atributoAtualizado: atributo): boolean {
+
+        let flag = false;
+
+        for (let index = 0; index < array.length; index++) {
+            const carta = array[index]!; //! para o typescript confiar no meu codigo, pois pra ele carta pode ser undefined, mesmo que percorra so ate o final no vetor
+
+            if (carta[atributoAtualizado] === old) {
+                carta[atributoAtualizado] = newW
+                flag = true
+            }
+        }
+        return flag;
+    }
+
+
+};
+
+
+    // =========================== FORMA CORRETA DE ATUALIZAR NO BANCO DE DADOS ===========================
+/* 
+    atualizar<atributo extends keyof Monstro>(
+        objeto: Monstro): boolean {
+        console
+
+        //buscar do banco
+        //Monstro monstroBd = buscarPorId(newW.id);
+
+        if(newW._ataque != monstroBd._ataque) {
+            monstroBd._ataque = newW._ataque;
+        }
+
+        //fazer para os outros campos
+
+        //Chamar o metodo para salva o novo monstroBd
+        salvar(monstroBd);
+    }
+} */
