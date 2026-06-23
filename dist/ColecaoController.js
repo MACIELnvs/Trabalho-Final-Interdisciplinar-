@@ -1,50 +1,36 @@
-import { Colecao } from "./model/Colecao";
-import { IPesquisavel } from "./IPesquisavel";
-
-export class ColecaoController {
-    private _vetColecao: Array<Colecao> = [];
-
-
-    public criaColecao(dados: any): Array<Colecao> {
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ColecaoController = void 0;
+const Colecao_1 = require("./model/Colecao");
+class ColecaoController {
+    constructor() {
+        this._vetColecao = [];
+    }
+    criaColecao(dados) {
         if (!dados.card_sets) {
             throw new Error("Erro ao pegar dados da coleção!");
         }
-
         for (let index = 0; index < dados.card_sets.length; index++) {
-            
             const dadosColecao = dados.card_sets[index];
-            const objColecao: Colecao = new Colecao(dadosColecao.set_name, dadosColecao.set_code, dadosColecao.set_rarity);
-
+            const objColecao = new Colecao_1.Colecao(dadosColecao.set_name, dadosColecao.set_code, dadosColecao.set_rarity);
             this._vetColecao.push(objColecao);
-
         }
-
         return this.listar();
     }
-
-
-    public adicionar(novaColecao: Colecao): void {
+    adicionar(novaColecao) {
         this._vetColecao.push(novaColecao);
     }
-
-
-    public listar(): Array<Colecao> {
+    listar() {
         return this._vetColecao.slice();
     }
-
-    public atualizar(id: string, novaColecao:Colecao): void {
+    atualizar(id, novaColecao) {
         const indice = this._vetColecao.findIndex(obj => obj.id == id);
-
         if (indice != -1) {
             this._vetColecao[indice] = novaColecao;
         }
     }
-
-    public remover(id: string): boolean {
-
+    remover(id) {
         let indice = this._vetColecao.findIndex(obj => obj.id == id);
-
         if (indice != -1) {
             this._vetColecao.splice(indice, 1);
             return true;
@@ -52,15 +38,11 @@ export class ColecaoController {
         else {
             return false;
         }
-
     }
-
-
-    public pesquisarPorCriterio(criterio: string): Array<IPesquisavel> {
+    pesquisarPorCriterio(criterio) {
         let vetorFiltrado = this._vetColecao.filter(obj => obj.atendeCriterio(criterio));
         return vetorFiltrado;
     }
-
-
-
 }
+exports.ColecaoController = ColecaoController;
+//# sourceMappingURL=ColecaoController.js.map

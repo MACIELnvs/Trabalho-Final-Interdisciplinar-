@@ -12,14 +12,12 @@ export async function fetchYuGiOh() {
         const responseJson = await response.json();
 
         vetCartas.criarCartas(responseJson);
-
+        
+        console.log(vetCartas);
         //console.log(vetCartas.pesquisarPorCriterio("Aqua"));
         
 
-    } catch (error) {
-        console.log(error);
+    } catch (error: any) {
+        console.log("Erro ao pegar dados da API: " + error.message);
     }
-
-
-
 }
