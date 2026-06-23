@@ -1,10 +1,10 @@
 import { Carta } from "./model/Carta";
 import { Feitico } from "./model/Feitico";
-import { IPesquisavel } from "./IPesquisavel";
+import { IPesquisavel } from "./model/IPesquisavel";
 import { Monstro } from "./model/Monstro";
 import { Armadilha } from "./model/Armadilha";
-import { ColecaoController } from "./ColecaoController";
 import { array } from "node:stream/iter";
+import { Colecao } from "./model/Colecao";
 
 export class CartaController {
 
@@ -31,25 +31,41 @@ export class CartaController {
                 console.error("Erro na criação do objeto: " + error.message);
             }
         }
+
     }
 
     public construirCarta(dados: any): Carta {
 
-        const vetColecao = new ColecaoController().criaColecao(dados);
+        const colecao: Colecao[] = [];
+
+        if (dados.card_sets) {
+            for (let i = 0; i < dados.card_sets.length; i++) {
+
+                const c = dados.card_sets[i];
+
+                const objColecao = new Colecao(
+                    c.set_name,
+                    c.set_code,
+                    c.set_rarity
+                );
+
+                colecao.push(objColecao);
+            }
+        }
 
         if (dados.frameType == "spell") {
 
-            const objFeitico: Feitico = new Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, vetColecao, dados.race);
+            const objFeitico: Feitico = new Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
             return objFeitico;
         }
         else if (dados.frameType == "trap") {
 
-            const objArmadilha: Armadilha = new Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, vetColecao, dados.race);
+            const objArmadilha: Armadilha = new Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
             return objArmadilha;
         }
         else {
 
-            const objMonstro: Monstro = new Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, vetColecao, dados.atk, dados.def, dados.level, dados.race);
+            const objMonstro: Monstro = new Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
             return objMonstro
         }
     }
@@ -91,6 +107,21 @@ export class CartaController {
     public pesquisarPorCriterio(criterio: string): Array<IPesquisavel> {
         let vetorFiltrado = this._vetCartas.filter(carta => carta.atendeCriterio(criterio));
         return vetorFiltrado;
+    }
+
+
+    public pesquisarCartaPorColecao(criterio: string): Array<IPesquisavel> {
+        return this._vetCartas.filter(carta => {
+
+            for (let i = 0; i < carta.vetColecao.length; i++) {
+
+                if (carta.vetColecao[i]?.atendeCriterio(criterio)) {
+                    return true;
+                }
+
+            }
+            return false;
+        });
     }
 
 }

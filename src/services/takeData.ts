@@ -1,6 +1,7 @@
 import { CartaController } from "../CartasController";
 
 
+
 const vetCartas = new CartaController();
 
 export async function fetchYuGiOh() {
@@ -12,10 +13,9 @@ export async function fetchYuGiOh() {
         const responseJson = await response.json();
 
         vetCartas.criarCartas(responseJson);
-        
-        console.log(vetCartas);
-        //console.log(vetCartas.pesquisarPorCriterio("Aqua"));
-        
+        console.log(vetCartas.listar());
+       // console.log(vetCartas.pesquisarCartaPorColecao("Justice Hunters"));
+       
 
     } catch (error: any) {
         console.log("Erro ao pegar dados da API: " + error.message);

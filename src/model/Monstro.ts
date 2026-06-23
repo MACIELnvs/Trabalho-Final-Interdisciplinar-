@@ -1,6 +1,6 @@
 import { Carta } from "./Carta";
 import { Colecao } from "./Colecao";
-import { IPesquisavel } from "../IPesquisavel";
+import { IPesquisavel } from "./IPesquisavel";
 
 export class Monstro extends Carta implements IPesquisavel {
 

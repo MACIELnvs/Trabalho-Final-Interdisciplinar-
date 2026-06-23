@@ -1,4 +1,4 @@
-import { IPesquisavel } from "../IPesquisavel";
+import { IPesquisavel } from "./IPesquisavel";
 
 export class Colecao implements IPesquisavel {
 
