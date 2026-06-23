@@ -6,17 +6,23 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Menu from './componentes/Menu'
 import Home from './pages/Home.jsx'
-import Cartas from './pages/Cartas.jsx'
+import Listagem from './pages/Listagem.jsx'
+import Update from './pages/Update.jsx'
+import AddRemove from './pages/AddRemove.jsx'
 
 function App() {
   return (
     <BrowserRouter>
       <Menu />
 
+      <main className='container'>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Cartas" element={<Cartas />} />
+        <Route path="/Listagem" element={<Listagem />} />
+        <Route path="/AddRemove" element={<AddRemove/>} />
+        <Route  path="/Update" element={<Update/>} />
       </Routes>
+      </main>
     </BrowserRouter>
   );
 }

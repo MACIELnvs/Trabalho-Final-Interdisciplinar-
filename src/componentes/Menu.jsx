@@ -1,17 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./Menu.css";
 
 export default function Menu() {
     return (
+    <header className="header">
+        <h1 className="logo">Yo-Gi-Oh!</h1>
         <nav>
-            <ul>
+            <ul className="menu">
                 <li>
-                    <Link to="/">Home</Link>
+                    <NavLink to="/">Home</NavLink>
                 </li>
 
                 <li>
-                    <Link to="/cartas">Cartas</Link>
+                    <NavLink to="/Listagem">Listagem</NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/AddRemove">Adicionar e Remover</NavLink>
+                </li>
+                
+                <li>
+                    <NavLink to="/Update">Atualizar Cartas</NavLink>
                 </li>
             </ul>
         </nav>
+    </header>
     )
 }
