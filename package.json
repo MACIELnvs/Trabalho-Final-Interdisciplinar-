@@ -2,7 +2,7 @@
   "name": "trabalho-final-interdisciplinar-",
   "version": "1.0.0",
   "description": "Projeto direcionado pelos nossos professores, afim de demonstrar os conhecimentos obtidos durante este período. Este trabalho ira explorar as seguintes matérias: Programação orientada a Objeto 2, Banco de Dados 2, Front end 2, Arquitetura de Software",
-  "main": "./src/index.ts",
+  "main": "./src/view/index.ts",
   "dependencies": {
     "anymatch": "^3.1.3",
     "balanced-match": "^4.0.4",
@@ -21,6 +21,7 @@
     "is-number": "^7.0.0",
     "minimatch": "^10.2.5",
     "ms": "^2.1.3",
+    "mysql2": "^3.22.5",
     "nodemon": "^3.1.14",
     "normalize-path": "^3.0.0",
     "picomatch": "^2.3.2",
@@ -33,7 +34,6 @@
     "touch": "^3.1.1",
     "undefsafe": "^2.0.5"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "node ./src/test.ts"
   },
@@ -48,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/MACIELnvs/Trabalho-Final-Interdisciplinar-/issues"
   },
-  "homepage": "https://github.com/MACIELnvs/Trabalho-Final-Interdisciplinar-#readme"
+  "homepage": "https://github.com/MACIELnvs/Trabalho-Final-Interdisciplinar-#readme",
+  "devDependencies": {
+    "@types/node": "^26.0.0"
+  }
 }
