@@ -6,7 +6,7 @@ export class Colecao implements IPesquisavel {
     private _nome: string;
     private _raridade: string;
 
-    constructor(nome: string, id: string, raridade: string) {
+    constructor( id: string,nome: string, raridade: string) {
         this._nome = nome;
         this._id = id;
         this._raridade = raridade;
@@ -17,7 +17,7 @@ export class Colecao implements IPesquisavel {
     }
 
     get id(): string {
-        return this.id;
+        return this._id;
     }
     
     get raridade(): string {
@@ -43,4 +43,17 @@ export class Colecao implements IPesquisavel {
         return `Nome Coleção: ${this._nome}\nCódigo: ${this._id}\nRaridade: ${this._raridade}`;
     }
 
+    
+    isValid() {
+        return Boolean(this._id?.trim()) && Boolean(this._nome?.trim());
+    }
+
+    public toPersistence() {
+        return {
+            idColecao: this._id,
+            nome: this._nome,
+            raridade: this._raridade 
+        };
+    }
 }
+export default Colecao;

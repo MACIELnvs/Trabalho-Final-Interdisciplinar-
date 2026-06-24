@@ -61,3 +61,4 @@ export abstract class Carta implements IPesquisavel {
     }
 
 }
+export default Carta;

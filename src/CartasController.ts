@@ -3,7 +3,6 @@ import { Feitico } from "./model/Feitico";
 import { IPesquisavel } from "./model/IPesquisavel";
 import { Monstro } from "./model/Monstro";
 import { Armadilha } from "./model/Armadilha";
-import { array } from "node:stream/iter";
 import { Colecao } from "./model/Colecao";
 
 export class CartaController {
@@ -110,7 +109,7 @@ export class CartaController {
     }
 
 
-    public pesquisarCartaPorColecao(criterio: string): Array<IPesquisavel> {
+    public pesquisarCartasPorColecao(criterio: string): Array<IPesquisavel> {
         return this._vetCartas.filter(carta => {
 
             for (let i = 0; i < carta.vetColecao.length; i++) {

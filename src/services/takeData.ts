@@ -14,7 +14,7 @@ export async function fetchYuGiOh() {
 
         vetCartas.criarCartas(responseJson);
         console.log(vetCartas.listar());
-       // console.log(vetCartas.pesquisarCartaPorColecao("Justice Hunters"));
+       //console.log(vetCartas.pesquisarCartasPorColecao("Justice Hunters"));
        
 
     } catch (error: any) {

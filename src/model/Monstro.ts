@@ -1,8 +1,8 @@
 import { Carta } from "./Carta";
 import { Colecao } from "./Colecao";
-import { IPesquisavel } from "./IPesquisavel";
 
-export class Monstro extends Carta implements IPesquisavel {
+
+export class Monstro extends Carta {
 
     private _ataque: number;
     private _defesa: number
@@ -10,7 +10,7 @@ export class Monstro extends Carta implements IPesquisavel {
     private _raca: string;
 
     constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>, ataque: number, defesa: number, nivel: number, raca: string) {
-        
+
         super(id, nome, img, descricao, vetColecao);
 
         this._ataque = ataque;
@@ -87,4 +87,19 @@ export class Monstro extends Carta implements IPesquisavel {
         return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
     }
 
+    isValid() {
+        return Boolean(super.id) && super.img !== undefined;
+    }
+
+    public toPersistence() {
+        return {
+            id: super.id,
+            ataque: this._ataque,
+            defesa: this._defesa,
+            nivel: this._nivel,
+            raca: this._raca
+        };
+    }
+
 }
+export default Monstro;
