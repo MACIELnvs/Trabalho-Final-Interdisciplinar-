@@ -1,10 +1,3 @@
-/* import { Carta } from "./model/Carta";
-import { Feitico } from "./model/Feitico";
-import { IPesquisavel } from "./model/IPesquisavel";
-import { Monstro } from "./model/Monstro";
-import { Armadilha } from "./model/Armadilha";
-import { Colecao } from "./model/Colecao"; */
-
 import {Carta} from "../models/Carta";
 import { Feitico } from "../models/Feitico";
 import { IPesquisavel } from "../interfaces/IPesquisavel";
@@ -60,7 +53,6 @@ export class CartaController {
         }
 
         if (dados.frameType == "spell") {
-
             const objFeitico: Feitico = new Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
             return objFeitico;
         }
