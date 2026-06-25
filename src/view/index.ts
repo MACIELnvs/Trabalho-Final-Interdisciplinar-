@@ -5,6 +5,9 @@ import {fetchYuGiOh} from "./services/takeData"; */
 const { testConnection } = require("../config/db");
 
 testConnection();
+require('dotenv').config();
+
+console.log(process.env.PORT);
 
 //fetchYuGiOh();
 

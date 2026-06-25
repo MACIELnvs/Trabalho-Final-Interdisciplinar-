@@ -1,8 +1,7 @@
-import { Carta } from "../src/Carta";
-import { Colecao } from "../src/Colecao";
-import { IPesquisavel } from "./IPesquisavel";
+import { Carta } from "./Carta";
+import { Colecao } from "./Colecao";
 
-export class Monstro extends Carta implements IPesquisavel {
+export class Monstro extends Carta{
 
     private _ataque: number;
     private _defesa: number

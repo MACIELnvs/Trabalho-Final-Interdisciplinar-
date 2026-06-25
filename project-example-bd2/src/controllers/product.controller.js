@@ -6,8 +6,10 @@ async function index(req, res) {
   return res.json(products);
 }
 
-// GET /products/:id
+
+// GET /products/:id 
 async function show(req, res) {
+  
   const product = await service.getById(req.params.id);
 
   if (!product) {

@@ -1,8 +1,7 @@
-import { Carta } from "../src/Carta";
-import { Colecao } from "../src/Colecao";
-import { IPesquisavel } from "./IPesquisavel";
+import { Carta } from "./Carta";
+import { Colecao } from "./Colecao";
 
-export class Feitico extends Carta implements IPesquisavel {
+export class Feitico extends Carta {
 
     private _tipoFeitico: string;
 

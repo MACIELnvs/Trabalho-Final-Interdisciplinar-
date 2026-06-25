@@ -11,7 +11,7 @@ export class CartaController {
     _vetCartas: Array<Carta> = [];
 
 
-    public criarCartas(responseJson: any): void {
+    public salvar(responseJson: any): void {
 
         if (!responseJson) {
             throw new Error("Erro ao pegar dados da api!");
@@ -53,17 +53,17 @@ export class CartaController {
         }
 
         if (dados.frameType == "spell") {
-            const objFeitico: Feitico = new Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
+            const objFeitico: Carta = new Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
             return objFeitico;
         }
         else if (dados.frameType == "trap") {
 
-            const objArmadilha: Armadilha = new Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
+            const objArmadilha: Carta = new Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
             return objArmadilha;
         }
         else {
 
-            const objMonstro: Monstro = new Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
+            const objMonstro: Carta = new Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
             return objMonstro
         }
     }
