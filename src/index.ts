@@ -1,7 +1,7 @@
 import express from "express";
 import { testConnection } from "./config/db";
 import cartaRoutes from "./routes/carta.routes";
-import CartaController from "./controller/CartasController";
+import CartaController from "./controller/cartasController";
 import { Monstro } from "./model/Monstro";
 
 
@@ -34,13 +34,13 @@ async function fetchECriar(): Promise<void> {
 }
 
 
-
 // ! Chamar fetch criar somente quando quiser inserir no banco!
   // await controller.fetchECriar();
 
 
-  await controller.carregarDoBanco();
-  console.log(controller.listar());
+ await controller.carregarDoBanco();
+ console.log(controller.listar());
+
 
   // ------------------------------------------ Testes ---------------------------------------------------------------------
 
@@ -50,6 +50,8 @@ async function fetchECriar(): Promise<void> {
   const monstro = new Monstro(1,"chubaka","....","cabeludo", [], 1,3,12,"srd");
   controller.adicionar(monstro);
 
+  const monstroIdRepetido = new Monstro(1003028,"chubaka","....","cabeludo", [], 1,3,12,"srd");
+  controller.adicionar(monstro);
 
 2. Atualizar
   await controller.carregarDoBanco();

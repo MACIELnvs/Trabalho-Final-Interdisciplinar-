@@ -10,6 +10,8 @@ export class CartaController {
 
     _vetCartas: Array<Carta> = [];
 
+
+
     async criarCartas(responseJson: any): Promise<void> {
 
         if (!responseJson) {
@@ -31,6 +33,7 @@ export class CartaController {
         }
 
     }
+
 
     construirCarta(dados: any): Carta {
         const colecao: Colecao[] = [];
@@ -83,27 +86,37 @@ export class CartaController {
     }
 
 
+
     async carregarDoBanco(): Promise<Array<Carta>> {
         this._vetCartas = await cartaService.listar();
 
         console.log(this._vetCartas.length + " cartas carregadas do banco.");
-  
+
         return this._vetCartas.slice();
     }
 
-    adicionar(carta: Carta): boolean {
 
-        if (this._vetCartas.push(carta)) {
-            console.log("Carta: " + carta.nome + " adicionada com sucesso!");
-            return true;
+
+    adicionar(cartaParametro: Carta): boolean {
+        const cartaRepetida = this._vetCartas.find(carta => carta.id == cartaParametro.id);
+
+        if (cartaRepetida) {
+            console.log('Existe uma carta com o mesmo ID no vetor!');
+            return false;
         }
-        return false;
 
+        this._vetCartas.push(cartaParametro)
+        console.log("Carta: " + cartaParametro.nome + " adicionada com sucesso!");
+        return true;
     }
+
+
 
     listar(): Array<Carta> {
         return this._vetCartas.slice();
     }
+
+
 
     atualizar(id: number, novaCarta: Carta): boolean {
         const indice = this._vetCartas.findIndex(obj => obj.id === id);
@@ -115,6 +128,8 @@ export class CartaController {
         }
         return false;
     }
+
+
 
     remover(id: number): boolean {
         const indice = this._vetCartas.findIndex(c => c.id === id);
@@ -129,9 +144,12 @@ export class CartaController {
         return false;
     }
 
+
+
     pesquisarPorCriterio(criterio: string): Array<IPesquisavel> {
         return this._vetCartas.filter(c => c.atendeCriterio(criterio));
     }
+
 
 
     pesquisarCartasPorColecao(criterio: string): Array<IPesquisavel> {
