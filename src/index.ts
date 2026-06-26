@@ -14,7 +14,10 @@ app.use("/cartas", cartaRoutes);
 const PORT = process.env.PORT || 3000;
 
 
-// ! Chamar fetch criar somente quando quiser inserir no banco!
+app.listen(PORT, async () => {
+  await testConnection();
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+
 
 async function fetchECriar(): Promise<void> {
 
@@ -31,23 +34,13 @@ async function fetchECriar(): Promise<void> {
 }
 
 
-app.listen(PORT, async () => {
-  await testConnection();
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
 
-
-
-
+// ! Chamar fetch criar somente quando quiser inserir no banco!
   // await controller.fetchECriar();
-  // await controller.salvarTodos();
 
- 
+
   await controller.carregarDoBanco();
-  //console.log(controller.listar());
-
-
-  //console.log(controller.pesquisarPorCriterio("srd"));
-
+  console.log(controller.listar());
 
   // ------------------------------------------ Testes ---------------------------------------------------------------------
 
