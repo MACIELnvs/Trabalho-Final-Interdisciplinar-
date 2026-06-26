@@ -1,67 +1,62 @@
-import pool from '../config/db';
+import pool from "../config/db";
 
-export class BaseRepository<T> {
+class BaseRepositorio {
   protected table: string;
   protected primaryKey: string;
 
   constructor(table: string, primaryKey: string = 'id') {
-    if (!table) {
-      throw new Error('É necessário informar o nome da tabela.');
-    }
     this.table = table;
     this.primaryKey = primaryKey;
   }
 
-  async findAll(): Promise<T[]> {
-    const [rows] = await pool.query<any[]>(
-      `SELECT * FROM ${this.table} ORDER BY ${this.primaryKey} DESC`
+  async findAll(): Promise<any[]> {
+    const [rows]: any = await pool.query(
+      `SELECT * FROM ${this.table} ORDER BY ${this.primaryKey}`
     );
-    return rows as T[];
+    return rows;
   }
 
-  async findById(id: number | string): Promise<T | null> {
-    const [rows] = await pool.query<any[]>(
+  async findById(id: number | string): Promise<any | null> {
+    const [rows]: any = await pool.query(
       `SELECT * FROM ${this.table} WHERE ${this.primaryKey} = ?`,
       [id]
     );
-    return (rows[0] as T) || null;
+    return rows[0] || null;
   }
 
-  async create(data: Partial<T>): Promise<T | null> {
+  async create(data: Record<string, any>): Promise<any> {
     const columns = Object.keys(data);
     const values = Object.values(data);
     const placeholders = columns.map(() => '?').join(', ');
 
-    const [result] = await pool.query<any>(
-      `INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})`,
+    await pool.query(
+      `INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})
+             ON DUPLICATE KEY UPDATE ${columns.map(c => `${c} = VALUES(${c})`).join(', ')}`,
       values
-    );  console.log("✔ INSERT EXECUTADO COM SUCESSO");
-
-    return this.findById(result.insertId);
+    );
+    return this.findById(data[this.primaryKey]);
   }
 
-  async update(id: number | string, data: Partial<T>): Promise<T | null> {
+  async update(id: number | string, data: Record<string, any>): Promise<any | null> {
     const columns = Object.keys(data);
     const values = Object.values(data);
-    const setClause = columns.map((col) => `${col} = ?`).join(', ');
+    const setClause = columns.map(col => `${col} = ?`).join(', ');
 
-    const [result] = await pool.query<any>(
+    const [result]: any = await pool.query(
       `UPDATE ${this.table} SET ${setClause} WHERE ${this.primaryKey} = ?`,
       [...values, id]
     );
-
     if (result.affectedRows === 0) return null;
-    return this.findById((data as any)[this.primaryKey]);
+    return this.findById(id);
   }
 
   async remove(id: number | string): Promise<boolean> {
-    const [result] = await pool.query<any>(
+    const [result]: any = await pool.query(
       `DELETE FROM ${this.table} WHERE ${this.primaryKey} = ?`,
       [id]
     );
-
     return result.affectedRows > 0;
   }
 }
 
-export default BaseRepository;
+export default BaseRepositorio;

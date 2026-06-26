@@ -102,4 +102,3 @@ export class Monstro extends Carta {
     }
 
 }
-export default Monstro;

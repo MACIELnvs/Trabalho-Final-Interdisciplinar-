@@ -1,56 +1,85 @@
-//import { fetchYuGiOh } from "./services/takeData";
-//import { testConnection } from "./config/db";
-
-//fetchYuGiOh();
-//testConnection();
-
-import dotenv from 'dotenv';
-
-import express, { Request, Response, NextFunction } from 'express';
-
-import pool from './config/db';
-
-import colecaotRoutes from './routes/colecao.routes';
+import express from "express";
+import { testConnection } from "./config/db";
+import cartaRoutes from "./routes/carta.routes";
+import CartaController from "./controller/CartasController";
+import { Monstro } from "./model/Monstro";
 
 
-dotenv.config();
+const controller = new CartaController();
 
 const app = express();
-const PORT: number = Number(process.env.PORT) || 3000;
-
-// Middlewares
 app.use(express.json());
+app.use("/cartas", cartaRoutes);
 
-// Routes
-app.use('/colecao', colecaotRoutes);
+const PORT = process.env.PORT || 3000;
 
-// Health check
-app.get('/', (req: Request, res: Response) => {
-  res.json({ status: 'ok', message: 'Products API' });
-});
 
-// Global Error Handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err);
-  res.status(500).json({ message: 'Erro interno no servidor.' });
-});
+// ! Chamar fetch criar somente quando quiser inserir no banco!
 
-app.listen(PORT, async () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-  
+async function fetchECriar(): Promise<void> {
 
   try {
-    if (typeof (pool as any).getConnection === 'function') {
-      const connection = await pool.getConnection();
-   
-      if (typeof (connection as any).release === 'function') {
-        (connection as any).release();
-      }
-      console.log('Conexão com o banco de dados estabelecida.');
-    } else {
-      console.warn('pool.getConnection não está disponível.');
-    }
-  } catch (err) {
-    console.error('Falha ao conectar ao banco de dados:', err);
+    const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php');
+    const responseJson = await response.json();
+
+    controller.criarCartas(responseJson);
+
   }
+  catch (error: any) {
+    console.log("Erro ao buscar dados da API: " + error.message);
+  }
+}
+
+
+app.listen(PORT, async () => {
+  await testConnection();
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+
+
+
+
+  // await controller.fetchECriar();
+  // await controller.salvarTodos();
+
+ 
+  await controller.carregarDoBanco();
+  //console.log(controller.listar());
+
+
+  //console.log(controller.pesquisarPorCriterio("srd"));
+
+
+  // ------------------------------------------ Testes ---------------------------------------------------------------------
+
+  /*
+ 1. Adicionar
+  await controller.carregarDoBanco();
+  const monstro = new Monstro(1,"chubaka","....","cabeludo", [], 1,3,12,"srd");
+  controller.adicionar(monstro);
+
+
+2. Atualizar
+  await controller.carregarDoBanco();
+  const monstro = new Monstro(1,"chubaka","....","cabeludo", [], 1,3,12,"srd");
+  controller.adicionar(monstro);
+  const monstro2 = new Monstro(1,"testeAtualizar","....","cabeludo", [], 1,3,12,"srd");
+  controller.atualizar(1,monstro2);
+
+
+3. Remover
+  controller.remover(1);
+
+
+
+5. Metodo de Ipesquisavel que pesquisa cartas que atendem determinado criterio
+  console.log(controller.pesquisarPorCriterio("Wyrm"));
+
+
+6. Metodo Ipesquisavel que pesquisa cartas que estao em determinada colecao
+  const cartasDaColecao = controller.pesquisarCartasPorColecao("Battles of Legend: Relentless Revenge");
+  console.log(cartasDaColecao);
+
+  */
+
+
 });
