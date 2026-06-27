@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Trabalho Interdisciplinar</title>
+</head>
+<body>
+    <header>
+        <div class="logo">KONAMI</div>
+        <nav>
+            <a href="home.html">HOME</a>
+            <a href="cartas.html">CARTAS</a>
+            <a href="atualizar.html">ATUALIZAR</a>
+            <a href="sobre.html">SOBRE</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="formAtualizar">
+            <h2>Modificar Carta</h2>
+            <input type="hidden" id="editId">
+            <input type="text" id="editNome" placeholder="Nome da Carta">
+            <input type="number" id="editAtk" placeholder="Ataque (Deixe vazio se for Magia/Armadilha)">
+            <input type="number" id="editDef" placeholder="Defesa (Deixe vazio se for Magia/Armadilha)">
+            <button id="btnSalvar" class="btn-editar">SALVAR ALTERAÇÕES</button>
+            <button id="btnCancelar" class="btn-editar" style="background:#555; margin-top:5px;">CANCELAR</button>
+        </div>
+
+        <div class="search-container">
+            <input id="inPesquisar" type="text" placeholder="Pesquisar carta para atualizar...">
+        </div>
+        
+        <div id="listaCartas" class="grid-cartas"></div>
+    </main>
+
+    <footer>
+        &copy; Copyright
+    </footer>
+
+    <script src="../JS/menu.js"></script>
+    <script src="../JS/atualizar.js"></script>
+</body>
+</html>
