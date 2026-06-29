@@ -33,7 +33,7 @@ export class Colecao implements IPesquisavel {
     }
 
     atendeCriterio(nomePesquisado: string): boolean {
-        if (this._nome == nomePesquisado) {
+        if (this._nome == nomePesquisado || this._raridade == nomePesquisado) {
             return true;
         }
         return false;

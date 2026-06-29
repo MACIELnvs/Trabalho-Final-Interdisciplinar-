@@ -8,8 +8,11 @@ import cartaService from "../services/carta.service";
 
 export class CartaController {
 
-    _vetCartas: Array<Carta> = [];
+    private _vetCartas: Array<Carta>;
 
+    constructor (){
+         this._vetCartas = new Array<Carta>(); 
+    }
 
 
     async criarCartas(responseJson: any): Promise<void> {
@@ -153,16 +156,20 @@ export class CartaController {
 
 
     pesquisarCartasPorColecao(criterio: string): Array<IPesquisavel> {
-        return this._vetCartas.filter(carta => {
-            for (let i = 0; i < carta.vetColecao.length; i++) {
+        if (this._vetCartas.length > 0){
+            return this._vetCartas.filter(carta => {
+                for (let i = 0; i < carta.vetColecao.length; i++) {
 
-                if (carta.vetColecao[i]?.atendeCriterio(criterio)) {
-                    return true;
+                    if (carta.vetColecao[i]?.atendeCriterio(criterio)) {
+                        return true;
+                    }
+
                 }
-
-            }
-            return false;
-        });
+                return false;
+            });
+        } else {
+            throw new Error("Pesquisa sobre vetor de cartas vazio!")
+        }
     }
 }
 

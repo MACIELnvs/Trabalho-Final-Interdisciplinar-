@@ -7,7 +7,7 @@ export abstract class Carta implements IPesquisavel {
     private _nome: string;
     private _img: string;
     private _descricao: string;
-    private _vetColecao: Array<Colecao> = [];
+    private _vetColecao: Array<Colecao>;
 
     constructor(id: number, nome: string, img: string, descricao: string, vetColecao: Array<Colecao>) {
 
@@ -35,7 +35,7 @@ export abstract class Carta implements IPesquisavel {
     }
 
     get vetColecao(): Array<Colecao> {
-        return this._vetColecao;
+        return this._vetColecao.slice();
     }
 
     public set nome(nome: string) {
