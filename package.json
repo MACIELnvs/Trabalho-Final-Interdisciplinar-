@@ -37,10 +37,10 @@
     "undefsafe": "^2.0.5"
   },
   "scripts": {
-  "dev": "ts-node src/index.ts",
-  "build": "tsc",
-  "start": "node dist/index.js"
-},
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MACIELnvs/Trabalho-Final-Interdisciplinar-.git"
