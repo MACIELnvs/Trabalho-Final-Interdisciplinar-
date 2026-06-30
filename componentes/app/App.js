@@ -417,15 +417,62 @@ const renderSobre = () => {
     root.innerHTML = "";
     root.appendChild(criarHeader());
 
+    // Título
     const h1 = document.createElement("h1");
+    h1.className = "crud-title";
     h1.textContent = "Sobre o Projeto";
-
-
-
-
-
-
     root.appendChild(h1);
+
+    // Container principal
+    const container = document.createElement("section");
+    container.className = "games";
+
+    // Card principal
+    const card = document.createElement("div");
+    card.className = "oferta-banner";
+
+    card.innerHTML = `
+        <div class="oferta-info">
+            <div>
+                <h3>Quem Somos</h3>
+                <p>
+                 Somos um grupo de estudantes que denvolveu um projeto, relacionado com o universo de Yu-GI-Oh.
+                </p>
+
+                <br>
+
+                <h3>Nossa Missão</h3>
+                <p>
+                 Tentar cosntruir um protipo funcional conectado com um back-end, que consiga armazenar e exibir informações de cartas do jogo Yu-GI-Oh.
+                </p>
+
+                <br>
+
+                <h3>O que você encontrará aqui?</h3>
+                <p>
+                    • Informações detalhadas sobre cartas de Yu-Gi-Oh, incluindo atributos, efeitos e imagens.
+                    • Uma interface amigável para explorar e filtrar cartas por categoria, tipo e atributos.
+                </p>
+
+                <br>
+
+                <h3>Tecnologias Utilizadas</h3>
+                <p>
+                    • Frontend: HTML, CSS, JavaScript e TypeScript.
+                    • Backend: Node.js, TypeScript.
+                    • Banco de Dados: MySQL Workbench
+                </p>
+
+                <br>
+
+            </div>
+        </div>
+    `;
+
+    container.appendChild(card);
+
+    root.appendChild(container);
+
     root.appendChild(criarFooter());
 };
 

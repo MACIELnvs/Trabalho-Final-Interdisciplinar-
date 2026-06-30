@@ -654,109 +654,96 @@ footer {
 }
 
 /*====================================================
-                    CRUD MONSTROS
+                    CRUD MONSTROS E INPUTS
 =====================================================*/
 
-.crud-container {
+/* Centraliza e limita o tamanho do formulário para não esticar na tela */
+.crud-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os elementos internamente */
+    gap: 16px;
     width: 100%;
-    max-width: 650px; /* Reduzido levemente para ficar mais compacto */
-    margin: 40px auto;
-    padding: 25px 30px; /* Reduzido o padding vertical */
-    background: var(--bg-card); /* Integrado com o marrom-escuro clássico */
+    max-width: 500px; /* Tamanho ideal e compacto para os inputs */
+    margin: 30px auto; /* Centraliza o formulário na página */
+    padding: 30px;
+    background: rgba(28, 21, 18, 0.85); /* var(--bg-card) com leve transparência */
     border: 2px solid var(--border);
     border-radius: 6px;
     box-shadow: var(--shadow);
     position: relative;
 }
 
-/* Detalhe decorativo nas quinas do container simulando moldura de carta */
-.crud-container::before {
+/* Moldura interna decorativa estilizando as quinas */
+.crud-form::before {
     content: "";
     position: absolute;
     inset: 4px;
-    border: 1px solid rgba(47, 174, 157, 0.15);
+    border: 1px solid rgba(214, 175, 55, 0.15); /* Linha dourada sutil interna */
     pointer-events: none;
     border-radius: 4px;
 }
 
+/* Título do CRUD */
 .crud-title {
     text-align: center;
-    color: var(--border-gold); /* Trocado azul por Dourado Relíquia */
+    color: var(--border-gold);
     font-family: "Cinzel", serif;
-    margin-bottom: 20px;
-    font-size: 28px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 8px rgba(71, 211, 213, 0.4);
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 32px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
-.crud-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px; /* Inputs mais juntos e compactos */
-}
-
-.crud-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.crud-group label {
-    color: var(--text-secondary); /* Dourado suave para os labels */
-    font-size: 13px; /* Texto ligeiramente menor */
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* INPUTS DECORADOS E MENORES */
-.crud-group input {
+/* INPUTS DESIGN PROFISSIONAL E COMPACTO */
+.crud-form input {
     width: 100%;
-    padding: 10px 14px; /* Diminuído o tamanho interno (antigo era 14px 16px) */
+    max-width: 100%; /* Respeita o limite do contêiner pai */
+    padding: 12px 16px;
     border-radius: 4px;
     border: 1px solid var(--border); /* Base bronze envelhecido */
-    background: #0f0a08; /* Fundo quase preto com tom quente/terroso */
+    background: #0f0a08; /* Fundo escuro terroso */
     color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8); /* Sombra interna para profundidade */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8); /* Profundidade interna */
     transition: var(--transition);
 }
 
 /* Efeito de ativação místico/holográfico ao focar no input */
-.crud-group input:focus {
+.crud-form input:focus {
     outline: none;
     border-color: var(--border-gold);
     background: #140d0a;
     box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.8),
-        0 0 10px rgba(4, 252, 235, 0.25); /* Brilho dourado suave */
+        inset 0 1px 3px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(255, 204, 0, 0.35); /* Brilho dourado refinado */
 }
 
-/* Estilização do Placeholder para combinar com o tema */
-.crud-group input::placeholder {
+/* Estilização do Placeholder */
+.crud-form input::placeholder {
     color: var(--text-muted);
     opacity: 0.6;
     font-style: italic;
+    letter-spacing: 0.5px;
 }
 
-.crud-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.crud-actions {
+/* CONTEINER DOS BOTÕES */
+.crud-buttons {
     display: flex;
     justify-content: center;
     gap: 16px;
+    width: 100%;
     margin-top: 10px;
 }
 
+/* BOTÕES REFINADOS */
 .crud-btn {
-    width: 160px;
-    padding: 11px;
-    font-size: 14px;
+    flex: 1;
+    max-width: 160px; /* Impede que os botões fiquem gigantes */
+    padding: 12px;
+    font-size: 13px;
     border: 1px solid var(--border-gold);
     border-radius: 4px;
     cursor: pointer;
@@ -764,49 +751,50 @@ footer {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition);
-    background: linear-gradient(to bottom, var(--gold-hover), #3fe2e5);
-
+    
+    /* Gradiente dourado combinando com o tema Hero/CTA */
+    background: linear-gradient(to bottom, var(--gold-hover), #947419);
+    color: #1c1512; 
 }
 
 .crud-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 12px var(--gold-glow);
+    box-shadow: 0 0 15px var(--gold-glow);
     filter: brightness(1.1);
 }
 
+/* Variação do botão de Excluir */
 .crud-delete {
     background: linear-gradient(to bottom, var(--ruby), var(--ruby-dark));
-    color: white;
+    color: #ffffff;
     border-color: #b02925;
 }
 
 .crud-delete:hover {
-    box-shadow: 0 0 12px rgba(158, 42, 43, 0.6);
-    background: linear-gradient(to bottom, var(--ruby), var(--ruby-dark));
+    box-shadow: 0 0 15px rgba(158, 42, 43, 0.7);
     filter: brightness(1.2);
 }
 
+/* GRID DO CRUD */
 .crud-grid {
-    margin: 50px 10%;
+    margin: 40px 10%;
 }
 
-@media(max-width:700px){
-    .crud-container {
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .crud-form {
         margin: 20px;
         padding: 20px;
     }
 
-    .crud-row {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .crud-actions {
+    .crud-buttons {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 12px;
     }
 
     .crud-btn {
+        max-width: 100%;
         width: 100%;
     }
 }

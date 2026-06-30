@@ -4,6 +4,8 @@ import cartaRoutes from "./routes/carta.routes";
 import CartaController from "./controller/cartasController";
 import { Monstro } from "./model/Monstro";
 
+import {listarCartas, buscarCarta} from "./frontend/service/frontService";
+
 
 const controller = new CartaController();
 
@@ -39,9 +41,12 @@ async function fetchECriar(): Promise<void> {
 
 
  await controller.carregarDoBanco();
- console.log(controller.listar());
-
-
+ //console.log(controller.listar());
+async function teste() {
+  const cartas = await listarCartas();
+  console.log(cartas);
+}
+teste();
   // ------------------------------------------ Testes ---------------------------------------------------------------------
 
   /*
