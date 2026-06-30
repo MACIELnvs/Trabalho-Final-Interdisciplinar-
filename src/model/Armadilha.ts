@@ -1,8 +1,8 @@
 import { Carta } from "./Carta";
 import { Colecao } from "./Colecao";
-import { IPesquisavel } from "./IPesquisavel";
 
-export class Armadilha extends Carta implements IPesquisavel {
+
+export class Armadilha extends Carta {
 
     private _tipoArmadilha: string;
 
