@@ -34,6 +34,7 @@ async function fetchECriar(): Promise<void> {
 }
 
 
+
 // ! Chamar fetch criar somente quando quiser inserir no banco!
   // await controller.fetchECriar();
 
