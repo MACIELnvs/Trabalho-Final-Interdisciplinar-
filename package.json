@@ -50,6 +50,6 @@
   },
   "homepage": "https://github.com/MACIELnvs/Trabalho-Final-Interdisciplinar-#readme",
   "devDependencies": {
-    "@types/node": "^26.0.0"
+    "@types/node": "^26.0.1"
   }
 }
