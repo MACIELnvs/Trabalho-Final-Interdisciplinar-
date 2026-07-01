@@ -206,22 +206,46 @@ Resultado esperado:
 Status HTTP 204 e remoção da carta.
 
 ---
-## TESTE DAS REQUISIÇÕES DO FRONT-END
-// Execute o backend primeiro:
-//     nodemon
-//
-// Depois execute este arquivo:
-//     npx ts-node src/testeRequisicoes.ts
-//
-// Este arquivo contém:
-// - listarCartas()
-// - pesquisarCartasCriterio()
-// - pesquisarCartasPorColecao()
-// - buscarCarta()
-// - criarCarta()
-// - atualizarCarta()
-// - removerCarta()
-
+/**
+ * ------------------------------------------------------------
+ * TESTE DAS REQUISIÇÕES DO FRONT-END
+ * ------------------------------------------------------------
+ *
+ * Antes de executar este arquivo:
+ *
+ * 1. Inicie o servidor backend:
+ *
+ *    nodemon
+ *
+ * 2. Verifique se o banco de dados está em execução
+ *    e conectado corretamente.
+ *
+ * 3. Execute este arquivo em um novo terminal:
+ *
+ *    npx ts-node src/testeRequisicoes.ts
+ *
+ * ------------------------------------------------------------
+ * Funções testadas:
+ * ------------------------------------------------------------
+ *
+ * ✓ listarCartas()
+ * ✓ pesquisarCartasCriterio()
+ * ✓ pesquisarCartasPorColecao()
+ * ✓ buscarCarta()
+ * ✓ criarCarta()
+ * ✓ atualizarCarta()
+ * ✓ removerCarta()
+ *
+ * ------------------------------------------------------------
+ * Objetivo:
+ * ------------------------------------------------------------
+ *
+ * Validar todas as funções exportadas pelo frontService,
+ * garantindo que possam ser utilizadas em qualquer parte
+ * do front-end através das rotas disponibilizadas pela API.
+ *
+ * ------------------------------------------------------------
+ */
 # Observações
 
 * O servidor deve estar em execução antes dos testes.
