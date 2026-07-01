@@ -12,11 +12,13 @@ const feitico_repository_1 = __importDefault(require("../repositories/feitico.re
 const armadilha_repository_1 = __importDefault(require("../repositories/armadilha.repository"));
 class CartaService {
     async salvar(carta) {
+        console.log("Service");
         await carta_repository_1.default.create({
             idCarta: carta.id,
             nome: carta.nome,
             imagem: carta.img,
-            descricao: carta.descricao
+            descricao: carta.descricao,
+            //vetColecao: carta.vetColecao
         });
         if (carta instanceof Monstro_1.Monstro) {
             await monstro_repository_1.default.create({
@@ -106,6 +108,7 @@ class CartaService {
         await monstro_repository_1.default.remove(id);
         await feitico_repository_1.default.remove(id);
         await armadilha_repository_1.default.remove(id);
+        await carta_repository_1.default.removerColecoes(id);
         return carta_repository_1.default.remove(id);
     }
 }

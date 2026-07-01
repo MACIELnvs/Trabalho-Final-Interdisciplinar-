@@ -68,11 +68,11 @@ class Monstro extends Carta_1.Carta {
     }
     toPersistence() {
         return {
-            id: super.id,
-            ataque: this._ataque,
-            defesa: this._defesa,
-            nivel: this._nivel,
-            raca: this._raca
+            ...super.toPersistence(),
+            ataque: this.ataque,
+            defesa: this.defesa,
+            nivel: this.nivel,
+            raca: this.raca
         };
     }
 }

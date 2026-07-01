@@ -8,6 +8,7 @@ const express_1 = __importDefault(require("express"));
 const db_1 = require("./config/db");
 const carta_routes_1 = __importDefault(require("./routes/carta.routes"));
 const cartasController_1 = __importDefault(require("./controller/cartasController"));
+const frontService_1 = require("./frontend/service/frontService");
 exports.controller = new cartasController_1.default();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -17,6 +18,7 @@ app.listen(PORT, async () => {
     await (0, db_1.testConnection)();
     await exports.controller.carregarDoBanco();
     console.log(`Servidor rodando em http://localhost:${PORT}`);
+    await testando();
 });
 async function fetchECriar() {
     try {
@@ -31,6 +33,10 @@ async function fetchECriar() {
 // ! Chamar fetch criar somente quando quiser inserir no banco!
 // await controller.fetchECriar();
 //await controller.carregarDoBanco();
+async function testando() {
+    const teste = await (0, frontService_1.atualizarCarta)(122121212, "batatinha", "spell");
+    console.log(teste);
+}
 // ------------------------------------------ Testes ---------------------------------------------------------------------
 /*
 1. Adicionar

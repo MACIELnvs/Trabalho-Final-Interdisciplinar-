@@ -60,5 +60,19 @@ export abstract class Carta implements IPesquisavel {
         return `ID: ${this._id} - Nome: ${this._nome} - Imagem: ${this._img} - Descrição: ${this._descricao}`;
     }
 
+    isValid(): boolean{
+    console.log(this._nome!== undefined && this._id !== undefined);
+    return this._nome!== undefined && this._id !== undefined;//Boolean(this._nome) && this._id !== undefined;
+  }
+
+  toPersistence() {
+    return {
+        id: this.id,
+        nome: this.nome,
+        imagem: this.img,
+        descricao: this.descricao,
+        vetColecao: this.vetColecao,
+    };
+  }
 }
 

@@ -27,5 +27,9 @@ class CartaRepositorio extends base_repository_1.default {
              WHERE cc.idCarta = ?`, [idCarta]);
         return rows.map((r) => new Colecao_1.Colecao(r.idColecao, r.nome, r.raridade));
     }
+    // carta.repository.ts
+    async removerColecoes(idCarta) {
+        await db_1.default.query(`DELETE FROM CartasColecoes WHERE idCarta = ?`, [idCarta]);
+    }
 }
 exports.default = new CartaRepositorio();

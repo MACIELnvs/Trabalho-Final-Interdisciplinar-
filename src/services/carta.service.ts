@@ -10,11 +10,14 @@ import armadilhaRepo from "../repositories/armadilha.repository";
 class CartaService {
 
     async salvar(carta: Carta): Promise<void> {
+        console.log("Service");
+
         await cartaRepo.create({
             idCarta: carta.id,
             nome: carta.nome,
             imagem: carta.img,
-            descricao: carta.descricao
+            descricao: carta.descricao,
+            //vetColecao: carta.vetColecao
         });
 
         if (carta instanceof Monstro) {
@@ -128,6 +131,7 @@ class CartaService {
         await monstroRepo.remove(id);
         await feiticoRepo.remove(id);
         await armadilhaRepo.remove(id);
+        await cartaRepo.removerColecoes(id);
         return cartaRepo.remove(id);
     }
 }

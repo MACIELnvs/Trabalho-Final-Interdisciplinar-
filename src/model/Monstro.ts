@@ -91,14 +91,14 @@ export class Monstro extends Carta {
         return Boolean(super.id) && super.img !== undefined;
     }
 
-    public toPersistence() {
-        return {
-            id: super.id,
-            ataque: this._ataque,
-            defesa: this._defesa,
-            nivel: this._nivel,
-            raca: this._raca
-        };
-    }
+     toPersistence() {
+    return {
+        ...super.toPersistence(),
+        ataque: this.ataque,
+        defesa: this.defesa,
+        nivel: this.nivel,
+        raca: this.raca
+    };
+  }
 
 }

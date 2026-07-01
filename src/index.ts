@@ -2,10 +2,11 @@ import express from "express";
 import { testConnection } from "./config/db";
 import cartaRoutes from "./routes/carta.routes";
 import CartaController from "./controller/cartasController";
+import { pesquisarCartasCriterio } from "./frontend/service/frontService";
+import { controller } from "./controller/controllerInstance";
 
 
 
- export const controller = new CartaController();
 
 const app = express();
 app.use(express.json());
@@ -14,11 +15,16 @@ app.use("/cartas", cartaRoutes);
 const PORT = process.env.PORT || 3000;
 
 
-app.listen(PORT, async () => {
+async function iniciar() {
   await testConnection();
-  await controller.carregarDoBanco(); 
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+  await controller.carregarDoBanco();
+
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+  });
+}
+
+iniciar();
 
 async function fetchECriar(): Promise<void> {
 
@@ -39,8 +45,8 @@ async function fetchECriar(): Promise<void> {
   // await controller.fetchECriar();
 
 
- //await controller.carregarDoBanco();
-
+// const resultado = controller.pesquisarPorCriterio("Wyrm");
+// console.log(resultado)
 
 
   // ------------------------------------------ Testes ---------------------------------------------------------------------

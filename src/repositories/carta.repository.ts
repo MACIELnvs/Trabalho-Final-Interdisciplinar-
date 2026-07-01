@@ -35,6 +35,14 @@ async inserirColecoes(idCarta: number, colecoes: Colecao[]): Promise<void> {
         );
         return rows.map((r: any) => new Colecao(r.idColecao, r.nome, r.raridade));
     }
+
+    // carta.repository.ts
+async removerColecoes(idCarta: number): Promise<void> {
+    await pool.query(
+        `DELETE FROM CartasColecoes WHERE idCarta = ?`,
+        [idCarta]
+    );
+}
 }
 
 export default new CartaRepositorio();

@@ -33,11 +33,27 @@ export class CartaController {
         }
 
     }
+    construirCartaDeParams(dados: any): Carta {
+        const id = Number(dados.id);
+        const nome = dados.nome;
+        const img = "";
+        const descricao = "";
+        const colecao: Colecao[] = [];
 
+        if (dados.frameType === "spell") {
+            return new Feitico(id, nome, img, descricao, colecao, "");
+        }
+        else if (dados.frameType === "trap") {
+            return new Armadilha(id, nome, img, descricao, colecao, "");
+        }
+        else {
+            return new Monstro(id, nome, img, descricao, colecao, 0, 0, 0, "");
+        }
+    }
 
     construirCarta(dados: any): Carta {
         const colecao: Colecao[] = [];
-
+        console.log(dados);
         if (dados.card_sets) {
             for (let i = 0; i < dados.card_sets.length; i++) {
 
@@ -51,8 +67,8 @@ export class CartaController {
 
             return new Feitico(
                 dados.id,
-                dados.name,
-                dados.card_images[0].image_url,
+                dados.nome,
+                dados.image_url,
                 dados.desc, colecao,
                 dados.race
             );
@@ -62,7 +78,7 @@ export class CartaController {
 
             return new Armadilha(
                 dados.id,
-                dados.name,
+                dados.nome,
                 dados.card_images[0].image_url,
                 dados.desc,
                 colecao,
@@ -73,7 +89,7 @@ export class CartaController {
 
             return new Monstro(
                 dados.id,
-                dados.name,
+                dados.nome,
                 dados.card_images[0].image_url,
                 dados.desc,
                 colecao,

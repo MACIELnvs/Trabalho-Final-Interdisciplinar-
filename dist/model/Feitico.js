@@ -22,5 +22,11 @@ class Feitico extends Carta_1.Carta {
     toString() {
         return `Feitiço: ${super.toString()} - Tipo de Feitiço: ${this._tipoFeitico}`;
     }
+    toPersistence() {
+        return {
+            ...super.toPersistence(),
+            tipoFeitico: this._tipoFeitico
+        };
+    }
 }
 exports.Feitico = Feitico;

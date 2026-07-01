@@ -32,5 +32,10 @@ export class Armadilha extends Carta {
         return `Armadilha: ${super.toString()} - Tipo de Armadilha: ${this._tipoArmadilha}`;
     }
 
-
+    toPersistence() {
+    return {
+        ...super.toPersistence(),
+        tipoFeitico: this._tipoArmadilha
+    };
+  }
 }

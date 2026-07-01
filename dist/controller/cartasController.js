@@ -29,8 +29,25 @@ class CartaController {
             }
         }
     }
+    construirCartaDeParams(dados) {
+        const id = Number(dados.id);
+        const nome = dados.nome;
+        const img = "";
+        const descricao = "";
+        const colecao = [];
+        if (dados.frameType === "spell") {
+            return new Feitico_1.Feitico(id, nome, img, descricao, colecao, "");
+        }
+        else if (dados.frameType === "trap") {
+            return new Armadilha_1.Armadilha(id, nome, img, descricao, colecao, "");
+        }
+        else {
+            return new Monstro_1.Monstro(id, nome, img, descricao, colecao, 0, 0, 0, "");
+        }
+    }
     construirCarta(dados) {
         const colecao = [];
+        console.log(dados);
         if (dados.card_sets) {
             for (let i = 0; i < dados.card_sets.length; i++) {
                 const objColecao = new Colecao_1.Colecao(dados.card_sets[i].set_code, dados.card_sets[i].set_name, dados.card_sets[i].set_rarity);
@@ -38,13 +55,13 @@ class CartaController {
             }
         }
         if (dados.frameType === "spell") {
-            return new Feitico_1.Feitico(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
+            return new Feitico_1.Feitico(dados.id, dados.nome, dados.image_url, dados.desc, colecao, dados.race);
         }
         else if (dados.frameType === "trap") {
-            return new Armadilha_1.Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
+            return new Armadilha_1.Armadilha(dados.id, dados.nome, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
         }
         else {
-            return new Monstro_1.Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
+            return new Monstro_1.Monstro(dados.id, dados.nome, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
         }
     }
     async carregarDoBanco() {

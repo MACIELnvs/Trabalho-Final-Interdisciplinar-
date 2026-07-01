@@ -25,13 +25,22 @@ class BaseRepositorio {
   }
 
   async create(data: Record<string, any>): Promise<any> {
+    console.log("Repository");
+
     const columns = Object.keys(data);
     const values = Object.values(data);
+
+    console.log('Coluna: ', data);
+
     const placeholders = columns.map(() => '?').join(', ');
 
+    const query = `INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})
+             ON DUPLICATE KEY UPDATE ${columns.map(c => `${c} = ${c}`).join(', ')}`;
+
+    console.log('Query feito do insert: ', query);
+
     await pool.query(
-      `INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})
-             ON DUPLICATE KEY UPDATE ${columns.map(c => `${c} = VALUES(${c})`).join(', ')}`,
+      query,
       values
     );
     return this.findById(data[this.primaryKey]);

@@ -22,5 +22,11 @@ class Armadilha extends Carta_1.Carta {
     toString() {
         return `Armadilha: ${super.toString()} - Tipo de Armadilha: ${this._tipoArmadilha}`;
     }
+    toPersistence() {
+        return {
+            ...super.toPersistence(),
+            tipoFeitico: this._tipoArmadilha
+        };
+    }
 }
 exports.Armadilha = Armadilha;

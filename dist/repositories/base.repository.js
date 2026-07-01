@@ -18,11 +18,15 @@ class BaseRepositorio {
         return rows[0] || null;
     }
     async create(data) {
+        console.log("Repository");
         const columns = Object.keys(data);
         const values = Object.values(data);
+        console.log('Coluna: ', data);
         const placeholders = columns.map(() => '?').join(', ');
-        await db_1.default.query(`INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})
-             ON DUPLICATE KEY UPDATE ${columns.map(c => `${c} = VALUES(${c})`).join(', ')}`, values);
+        const query = `INSERT INTO ${this.table} (${columns.join(', ')}) VALUES (${placeholders})
+             ON DUPLICATE KEY UPDATE ${columns.map(c => `${c} = ${c}`).join(', ')}`;
+        console.log('Query feito do insert: ', query);
+        await db_1.default.query(query, values);
         return this.findById(data[this.primaryKey]);
     }
     async update(id, data) {
