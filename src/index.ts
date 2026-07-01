@@ -2,12 +2,10 @@ import express from "express";
 import { testConnection } from "./config/db";
 import cartaRoutes from "./routes/carta.routes";
 import CartaController from "./controller/cartasController";
-import { Monstro } from "./model/Monstro";
-
-import {listarCartas, buscarCarta} from "./frontend/service/frontService";
 
 
-const controller = new CartaController();
+
+ export const controller = new CartaController();
 
 const app = express();
 app.use(express.json());
@@ -18,8 +16,9 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
   await testConnection();
+  await controller.carregarDoBanco(); 
   console.log(`Servidor rodando em http://localhost:${PORT}`);
-
+});
 
 async function fetchECriar(): Promise<void> {
 
@@ -40,13 +39,10 @@ async function fetchECriar(): Promise<void> {
   // await controller.fetchECriar();
 
 
- await controller.carregarDoBanco();
- //console.log(controller.listar());
-async function teste() {
-  const cartas = await listarCartas();
-  console.log(cartas);
-}
-teste();
+ //await controller.carregarDoBanco();
+
+
+
   // ------------------------------------------ Testes ---------------------------------------------------------------------
 
   /*
@@ -82,4 +78,4 @@ teste();
   */
 
 
-});
+;

@@ -63,6 +63,17 @@ class Monstro extends Carta_1.Carta {
     toString() {
         return `Monstro: ${super.toString()} - Ataque: ${this._ataque} - Defesa: ${this._defesa} - Nível: ${this._nivel} - Raça: ${this._raca}`;
     }
+    isValid() {
+        return Boolean(super.id) && super.img !== undefined;
+    }
+    toPersistence() {
+        return {
+            id: super.id,
+            ataque: this._ataque,
+            defesa: this._defesa,
+            nivel: this._nivel,
+            raca: this._raca
+        };
+    }
 }
 exports.Monstro = Monstro;
-//# sourceMappingURL=Monstro.js.map

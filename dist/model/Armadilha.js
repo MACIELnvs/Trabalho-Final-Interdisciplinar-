@@ -24,4 +24,3 @@ class Armadilha extends Carta_1.Carta {
     }
 }
 exports.Armadilha = Armadilha;
-//# sourceMappingURL=Armadilha.js.map

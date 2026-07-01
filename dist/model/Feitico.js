@@ -24,4 +24,3 @@ class Feitico extends Carta_1.Carta {
     }
 }
 exports.Feitico = Feitico;
-//# sourceMappingURL=Feitico.js.map

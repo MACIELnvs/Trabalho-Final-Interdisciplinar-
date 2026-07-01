@@ -42,4 +42,3 @@ class Carta {
     }
 }
 exports.Carta = Carta;
-//# sourceMappingURL=Carta.js.map

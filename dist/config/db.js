@@ -27,4 +27,3 @@ async function testConnection() {
     }
 }
 exports.default = pool;
-//# sourceMappingURL=db.js.map
