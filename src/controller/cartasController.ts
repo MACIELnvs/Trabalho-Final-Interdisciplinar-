@@ -67,7 +67,7 @@ export class CartaController {
 
             return new Feitico(
                 dados.id,
-                dados.nome,
+                dados.name,
                 dados.image_url,
                 dados.desc, colecao,
                 dados.race
@@ -78,7 +78,7 @@ export class CartaController {
 
             return new Armadilha(
                 dados.id,
-                dados.nome,
+                dados.name,
                 dados.card_images[0].image_url,
                 dados.desc,
                 colecao,
@@ -89,7 +89,7 @@ export class CartaController {
 
             return new Monstro(
                 dados.id,
-                dados.nome,
+                dados.name,
                 dados.card_images[0].image_url,
                 dados.desc,
                 colecao,
