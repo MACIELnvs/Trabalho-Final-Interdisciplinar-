@@ -5,7 +5,7 @@
 
 # Ignorar pastas de dependências
 node_modules/
-sql/banco_yugioh.sql
+
 
 # Ignorar arquivos de sistema/OS
 .DS_Store
