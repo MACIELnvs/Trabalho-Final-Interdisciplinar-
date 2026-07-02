@@ -2,21 +2,20 @@ import { CartaDBController } from "../controllers/bdController";
 import { Carta } from "../models/Carta";
 import { CartaRepository } from "../repositories/carta-repository";
 
+export class ServiceCarta {
+  private cartaRepository: CartaRepository = new CartaRepository();
 
-export abstract class ServiceCarta {
-
-
-  static async listarTodas() {
-    return CartaRepository.listarTodas();
+   async listarTodas() {
+    return this.cartaRepository.listarTodas();
   }
 
 
-  static async salvarBD() {
+ /*  static async salvarBD() {
     return CartaRepository.salvarBD();
   }
 
   static async criarCarta(carta: any) {
     return await CartaRepository.criar(carta);
-  }
+  } */
 }
-//module.exports = new ServiceCarta();
+module.exports = new ServiceCarta();

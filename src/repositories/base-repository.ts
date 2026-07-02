@@ -1,6 +1,6 @@
 //const pool = require('../config/db');
 
-class BaseRepository {
+export class BaseRepository {
 
   private table:string;
   private primaryKey:string;

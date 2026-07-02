@@ -1,9 +1,9 @@
-const BaseRepository = require('../repositories/base-repository');
+import { BaseRepository } from "./base-repository";
 
 
 export class CartaRepository extends BaseRepository {
   constructor() {
-    super('cartas');
+    super('Cartas', 'idCarta');
   }
 }
 

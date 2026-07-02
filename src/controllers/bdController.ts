@@ -15,7 +15,7 @@ export abstract class CartaDBController {
   }
 
 
-  static async criarCarta(req: any, res: any) {
+  /* static async criarCarta(req: any, res: any) {
   const dados = req.body;
 
   const controller = new CartaController();
@@ -26,11 +26,7 @@ export abstract class CartaDBController {
   return res.json(resultado);
 }
 
-
   static async salvarBD (resolve:any, reject:any){
-
-
-
-  }
+  } */
 
 } 
