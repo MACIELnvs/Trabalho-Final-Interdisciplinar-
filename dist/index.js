@@ -3,40 +3,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.controller = void 0;
 const express_1 = __importDefault(require("express"));
 const db_1 = require("./config/db");
 const carta_routes_1 = __importDefault(require("./routes/carta.routes"));
-const cartasController_1 = __importDefault(require("./controller/cartasController"));
-const frontService_1 = require("./frontend/service/frontService");
-exports.controller = new cartasController_1.default();
+const controllerInstance_1 = require("./controller/controllerInstance");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/cartas", carta_routes_1.default);
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
+async function iniciar() {
     await (0, db_1.testConnection)();
-    await exports.controller.carregarDoBanco();
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-    await testando();
-});
+    await controllerInstance_1.controller.carregarDoBanco();
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando em http://localhost:${PORT}`);
+    });
+}
+iniciar();
 async function fetchECriar() {
     try {
         const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php');
         const responseJson = await response.json();
-        exports.controller.criarCartas(responseJson);
+        controllerInstance_1.controller.criarCartas(responseJson);
     }
     catch (error) {
         console.log("Erro ao buscar dados da API: " + error.message);
     }
 }
+//fetchECriar();
 // ! Chamar fetch criar somente quando quiser inserir no banco!
 // await controller.fetchECriar();
-//await controller.carregarDoBanco();
-async function testando() {
-    const teste = await (0, frontService_1.atualizarCarta)(122121212, "batatinha", "spell");
-    console.log(teste);
-}
+// const resultado = controller.pesquisarPorCriterio("Wyrm");
+// console.log(resultado)
 // ------------------------------------------ Testes ---------------------------------------------------------------------
 /*
 1. Adicionar

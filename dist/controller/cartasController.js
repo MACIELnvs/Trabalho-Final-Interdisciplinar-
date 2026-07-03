@@ -55,13 +55,13 @@ class CartaController {
             }
         }
         if (dados.frameType === "spell") {
-            return new Feitico_1.Feitico(dados.id, dados.nome, dados.image_url, dados.desc, colecao, dados.race);
+            return new Feitico_1.Feitico(dados.id, dados.name, dados.image_url, dados.desc, colecao, dados.race);
         }
         else if (dados.frameType === "trap") {
-            return new Armadilha_1.Armadilha(dados.id, dados.nome, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
+            return new Armadilha_1.Armadilha(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.race);
         }
         else {
-            return new Monstro_1.Monstro(dados.id, dados.nome, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
+            return new Monstro_1.Monstro(dados.id, dados.name, dados.card_images[0].image_url, dados.desc, colecao, dados.atk, dados.def, dados.level, dados.race);
         }
     }
     async carregarDoBanco() {
