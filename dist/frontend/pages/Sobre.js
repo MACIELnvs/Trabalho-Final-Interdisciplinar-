@@ -56,8 +56,7 @@ export function renderSobre(container) {
                     <article class="sobre-card">
                         <h2>Banco de Dados</h2>
                         <p>
-                            As cartas são armazenadas no banco de dados, e o frontend acessa essas
-                            informações por meio da API, sem se conectar diretamente ao banco.
+                            As cartas são armazenadas no banco de dados, e o frontend as puxa novamente.
                         </p>
                     </article>
                 </section>
@@ -66,20 +65,18 @@ export function renderSobre(container) {
                     <h2>Como o sistema funciona?</h2>
 
                     <div class="fluxo-itens">
-                        <div class="fluxo-item">Frontend</div>
+                        <div class="fluxo-item">API</div>
                         <span>→</span>
-                        <div class="fluxo-item">API Express</div>
+                        <div class="fluxo-item">Backend</div>
                         <span>→</span>
                         <div class="fluxo-item">Banco</div>
                         <span>→</span>
-                        <div class="fluxo-item">Cartas na tela</div>
+                        <div class="fluxo-item">Backend</div>
+                         <span>→</span>
+                        <div class="fluxo-item">Frontend</div>
+
                     </div>
 
-                    <p>
-                        O usuário interage com a interface. O frontend chama o backend usando
-                        <strong>fetch</strong>. O backend consulta ou altera o banco de dados e
-                        devolve os dados para a tela.
-                    </p>
                 </section>
 
                 <section class="sobre-card tecnologias">

@@ -3,7 +3,7 @@ export function criarHeader(navegar) {
     header.className = "layout-header";
     const logo = document.createElement("div");
     logo.className = "logo";
-    logo.textContent = "KONAMI";
+    logo.textContent = "EXODIA";
     const nav = document.createElement("nav");
     nav.className = "menu-principal";
     const links = [
