@@ -2,8 +2,6 @@
 // PARA TESTAR RODE npx ts-node src/testeRequisicoes.ts
 
 
-
-
 import {
     listarCartas,
     pesquisarCartasCriterio,
@@ -86,7 +84,7 @@ async function testarRemoverCarta() {
 }
 
 //testarListarCartas();
-//testarPesquisarPorCriterio();
+testarPesquisarPorCriterio();
 //testarPesquisarPorColecao();
 //testarBuscarCarta();
 //testarCriarCarta();
