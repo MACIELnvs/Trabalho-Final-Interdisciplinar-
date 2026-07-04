@@ -7,7 +7,7 @@ import monstroRepo from "../repositories/monstro.repository";
 import feiticoRepo from "../repositories/feitico.repository";
 import armadilhaRepo from "../repositories/armadilha.repository";
 
-class CartaService {
+export class CartaService {
 
     async salvar(carta: Carta): Promise<void> {
         console.log("Service");

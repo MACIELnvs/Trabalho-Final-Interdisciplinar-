@@ -12,6 +12,20 @@ import {
     removerCarta
 } from "./frontend/service/frontService";
 
+import {CartaService} from "./services/carta.service";
+
+// ===========================testes banco de dados ====================
+async function testeBD() {
+    const cartaService = new CartaService();
+
+    var buscar = await cartaService.buscarPorId(2095764);
+    console.log(buscar);
+}
+
+testeBD();
+// =================================================================
+
+
 
 
 async function testarListarCartas() {
@@ -41,11 +55,12 @@ async function testarPesquisarPorColecao() {
 
 
 async function testarBuscarCarta() {
-    const carta = await buscarCarta(2095764);
+    const carta = await buscarCarta(2095764); //2095764
 
     console.log("=== BUSCAR CARTA ===");
     console.log(carta);
 }
+//testarBuscarCarta();
 
 
 async function testarCriarCarta() {
@@ -84,7 +99,7 @@ async function testarRemoverCarta() {
 }
 
 //testarListarCartas();
-testarPesquisarPorCriterio();
+//testarPesquisarPorCriterio();
 //testarPesquisarPorColecao();
 //testarBuscarCarta();
 //testarCriarCarta();

@@ -3,6 +3,7 @@ import cors from "cors";
 import { testConnection } from "./config/db";
 import cartaRoutes from "./routes/carta.routes";
 import { controller } from "./controller/controllerInstance";
+import { Carta } from "./model/Carta";
 
 const app = express();
 
