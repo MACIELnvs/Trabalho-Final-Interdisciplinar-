@@ -234,7 +234,7 @@ Esse arquivo valida todas as funções disponibilizadas pelo módulo `frontServi
 ### 1. Inicie o Backend
 
 ```bash
-nodemon
+npm run dev 
 ```
 
 ### 2. Em outro terminal, execute:
@@ -243,7 +243,12 @@ nodemon
 npx ts-node src/testeRequisicoes.ts
 ```
 
----
+### 1. instalar dependencias do front:
+
+```bash
+npm install cors
+npm install -D @types/express          
+```
 
 ## Funções Testadas
 
